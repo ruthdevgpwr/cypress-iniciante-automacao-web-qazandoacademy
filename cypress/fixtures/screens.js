@@ -1,0 +1,1 @@
+export const screens = ['desktop', 'ipad-2', 'iphone-x', 'iphone-6', 'macbook-11', 'macbook-15', 'macbook-16', 'samsung-note9', 'samsung-s10']

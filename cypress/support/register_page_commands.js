@@ -1,35 +1,57 @@
 /// <reference types="cypress" />
 
+//Elements
+
+const elements = {
+
+  buttons: {
+    register: '#btnRegister'
+  },
+  fields: {
+    name: '#user',
+    email: '#email',
+    password: '#password'
+  },
+  messages: {
+    error: '.errorLabel',
+    successTitle: '#swal2-title',
+    successSubtitle: '.swal2-html-container'
+  },
+}
+
+
+//Ações/Métodos/Funções
+
 Cypress.Commands.add('saveRegister', () => {
 
-  cy.get('#btnRegister')
+  cy.get(elements.buttons.register)
     .click()
 
 })
 
 Cypress.Commands.add('fillName', (name) => {
 
-  cy.get('#user')
+  cy.get(elements.fields.name)
     .type(name)
 
 })
 
 Cypress.Commands.add('fillEmail', (email) => {
 
-  cy.get('#email')
+  cy.get(elements.fields.email)
     .type(email)
 
 })
 
 Cypress.Commands.add('fillPassword', (password) => {
 
-  cy.get('#password')
+  cy.get(elements.fields.password)
     .type(password)
 })
 
 Cypress.Commands.add('checkMessage', (message) => {
 
-  cy.get('.errorLabel')
+  cy.get(elements.messages.error)
     .should('be.visible')
     .should('have.text', message)
 
@@ -37,13 +59,12 @@ Cypress.Commands.add('checkMessage', (message) => {
 
 Cypress.Commands.add('checkRegisterSuccess', (name) => {
 
-  cy.get('#swal2-title')
+  cy.get(elements.messages.successTitle)
     .should('be.visible')
     .should('have.text', 'Cadastro realizado!')
 
-  cy.get('.swal2-html-container')
+  cy.get(elements.messages.successSubtitle)
     .should('be.visible')
     .should('have.text', `Bem-vindo ${name}`)
 
 })
-
